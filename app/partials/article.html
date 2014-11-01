@@ -1,0 +1,7 @@
+<div class="container">
+  <m-loading ng-if="!vm.data.content"></m-loading>
+  <div ng-if="vm.data.content"
+       ng-bind-html="vm.data.content"></div>
+
+  <div duoshuo data-thread-key="{{vm.data.blog.number}}"></div>
+</div>

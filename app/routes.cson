@@ -8,10 +8,11 @@
       controller: "HomeCtrl"
   }
   {
-    url: "/about"
+    url: "/article/:id"
     params:
-      name: "about"
-      label: "About Us"
-      templateUrl: "partials/about.html"
+      name: "article"
+      label: ""
+      templateUrl: "partials/article.html"
+      controller: "ArticleCtrl"
   }
 ]

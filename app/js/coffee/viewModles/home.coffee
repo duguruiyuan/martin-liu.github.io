@@ -1,15 +1,11 @@
-App.factory 'HomeViewModel', ($q, $location, $timeout, Constant
+App.factory 'HomeViewModel', ($q, $location, $timeout, BlogRemoteService
 , BaseViewModel, Util, Cache) ->
 
   class HomeViewModel extends BaseViewModel
     ## Override
     bindView : =>
-      @data.announcements = [
-        {
-          date: "2014-01-01"
-          msg: "this is a test"
-        }
-      ]
+      BlogRemoteService.getBlogs().then (blogs) =>
+        @data.blogs = blogs
 
     ## Override
     bindAction: =>
