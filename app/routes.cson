@@ -11,8 +11,15 @@
     url: "/article/:id"
     params:
       name: "article"
-      label: ""
+      hide: true
       templateUrl: "partials/article.html"
       controller: "ArticleCtrl"
+  }
+  {
+    url: "/about"
+    params:
+      name: "about"
+      label: "About"
+      templateUrl: "partials/about.html"
   }
 ]

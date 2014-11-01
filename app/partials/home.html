@@ -1,10 +1,6 @@
-<div style="margin: 100px">
-  <div class="container">
-    <m-loading ng-if="!vm.data.blogs"></m-loading>
-    <div ng-if="vm.data.blogs" ng-repeat="blog in vm.data.blogs">
-      <p>
-        <a href="" ng-click="Util.redirect('/blog/' + blog.number)">{{ blog.title }}</a>
-      </p>
-    </div>
-  </div>
+<m-loading ng-if="!vm.data.blogs"></m-loading>
+<div ng-if="vm.data.blogs" ng-repeat="blog in vm.data.blogs">
+  <p>
+    <a href="" ng-click="Util.redirect('/article/' + blog.number)">{{ blog.title }}</a>
+  </p>
 </div>
