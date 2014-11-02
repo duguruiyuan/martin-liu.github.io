@@ -1,5 +1,5 @@
-App.factory 'ArticleViewModel', ($q, $routeParams, BlogRemoteService
-, BaseViewModel, Util, Cache) ->
+App.factory 'ArticleViewModel', ($rootScope, $routeParams, BlogRemoteService
+, BlogService, BaseViewModel, Util, Cache) ->
 
   class ArticleViewModel extends BaseViewModel
     ## Override
@@ -7,9 +7,12 @@ App.factory 'ArticleViewModel', ($q, $routeParams, BlogRemoteService
       id = $routeParams.id
       BlogRemoteService.getBlog(id).then (blog) =>
         if blog.body
-          @data.blog = blog
+          @data.blog = BlogService.decorateBlog blog
+          # render markdown
           BlogRemoteService.renderBlog(blog.body).then (ret)=>
             @data.content = ret
+          # bind root scope
+          $rootScope.blog = @data.blog
 
     ## Override
     bindAction: =>

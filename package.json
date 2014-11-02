@@ -38,6 +38,7 @@
     "moment": "~2.7.0"
   },
   "scripts": {
-    "deploy": "./bin/deploy-ghpages.sh"
+    "deploy": "./bin/deploy-ghpages.sh",
+    "master": "./bin/dist2master.sh"
   }
 }

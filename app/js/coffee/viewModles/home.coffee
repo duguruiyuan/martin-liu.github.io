@@ -1,11 +1,14 @@
 App.factory 'HomeViewModel', ($q, $location, $timeout, BlogRemoteService
-, BaseViewModel, Util, Cache) ->
+, BlogService, BaseViewModel, Util, Cache) ->
 
   class HomeViewModel extends BaseViewModel
     ## Override
-    bindView : =>
+    bindView: =>
       BlogRemoteService.getBlogs().then (blogs) =>
-        @data.blogs = blogs
+        @data.blogs = @processBlogs blogs
+
+    processBlogs: (blogs) ->
+      _.map blogs, BlogService.decorateBlog
 
     ## Override
     bindAction: =>

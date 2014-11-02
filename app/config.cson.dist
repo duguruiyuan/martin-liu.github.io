@@ -4,6 +4,10 @@ uri:
   host: "/"
   api: "https://api.github.com/"
 
+githubRepo:
+  name: "martin-liu.github.io"
+  owner: "martin-liu"
+
 default:
   displayCount: 10
   modalAnimateIn: "fadeInRight"
@@ -16,5 +20,8 @@ piwik:
   url: ''
   siteId: 0
 
-urlHtml5Mode: true
+intro:
+  enabled: false
+
+urlHtml5Mode: false
 version: "0.0.1"

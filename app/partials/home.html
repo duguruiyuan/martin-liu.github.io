@@ -1,6 +1,10 @@
 <m-loading ng-if="!vm.data.blogs"></m-loading>
 <div ng-if="vm.data.blogs" ng-repeat="blog in vm.data.blogs">
-  <p>
-    <a href="" ng-click="Util.redirect('/article/' + blog.number)">{{ blog.title }}</a>
-  </p>
+  <div style="cursor:pointer"
+       ng-click="Util.redirect('/article/' + blog.number)">
+    <h3 ng-bind="blog.title"></h3>
+    <p class="summary" ng-bind="blog.summary + '...'"></p>
+    <span ng-bind="blog.created_at | date:'yyyy-MM-dd'"</span>>
+  </div>
+  <hr/>
 </div>

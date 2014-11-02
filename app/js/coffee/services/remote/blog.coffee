@@ -12,6 +12,8 @@ App.factory 'BlogRemoteService', (Config, Restangular, Util) ->
   defaultParam =
     state: "open"
     labels: "blog"
+    page: 1
+    per_page: 10
 
   @getBlogs = (param) ->
     param = _.extend defaultParam, param
