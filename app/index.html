@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title ng-bind="blog.title ? blog.title + ' | 今夕何夕？' : '今夕何夕？'"></title>
+    <title ng-bind="blog.title ? blog.title : '今夕何夕？'"></title>
     <meta name="description" content="{{ blog.summary }}">
     <meta name="fragment" content="!">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -39,7 +39,7 @@
 
   </head>
   <body ng-animate="{enter: 'animated fadeInX'}" ng-cloak style="overflow-x: hidden">
-    <!-- HEADER -->
+    <!-- START:HEADER -->
     <div headroom intro-step="2" style="min-height:45px"
          class="intro-step navbar navbar-inverse navbar-fixed-top animated slideInDown">
       <div class="navbar-inner">
@@ -60,6 +60,9 @@
         </div>
       </div>
     </div>
+    <!-- fork me on github -->
+    <a href="https://github.com/martin-liu/martin-liu.github.io" target="_blank"><img style="z-index:10000;position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <!-- END:HEADER -->
 
     <!-- BODY -->
     <div class="app animate-hinge container">
@@ -97,23 +100,36 @@
     <script src="//localhost:35729/livereload.js"></script>
     <!-- endbuild -->
 
-    <!-- duoshuo -->
+    <!-- load scripts dynamically-->
     <script>
+     function addScript(src){
+       var el = document.createElement("script");
+       el.src = src;
+       var s = document.getElementsByTagName("script")[0];
+       s.parentNode.insertBefore(el, s);
+     }
+
+     // duoshuo
      var duoshuoQuery = {
        short_name: 'martin-liu'
      }
-    </script>
-    <script src="http://static.duoshuo.com/embed.unstable.js"></script>
 
-    <!-- Baidu statistics-->
-    <script>
+     // baidu statistics
      var _hmt = _hmt || [];
-     (function() {
-       var hm = document.createElement("script");
-       hm.src = "//hm.baidu.com/hm.js?a67e974dea316e70836c07c3e3576a29";
-       var s = document.getElementsByTagName("script")[0];
-       s.parentNode.insertBefore(hm, s);
-     })();
+     _hmt.push(['_setAutoPageview', false]);
+
+     var scriptSrcs = [
+       'http://static.duoshuo.com/embed.unstable.js', // duoshuo
+       '//hm.baidu.com/hm.js?a67e974dea316e70836c07c3e3576a29' // baidu statistics
+     ]
+
+     for(var i = 0; i < scriptSrcs.length; i++){
+       addScript(scriptSrcs[i]);
+     }
     </script>
+
+    <!-- 社会化分享, JiaThis Button BEGIN -->
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
   </body>
 </html>
