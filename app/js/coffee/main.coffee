@@ -14,6 +14,7 @@ App.constant '_', _
 App.config ($provide, $httpProvider, RestangularProvider) ->
   # Restangular base url
   RestangularProvider.setBaseUrl Config.uri.api
+  RestangularProvider.setDefaultRequestParams('jsonp', {callback: 'JSON_CALLBACK'})
 
   # Global http error handler
   $httpProvider.interceptors.push ($timeout, $q, $rootScope, $location) ->

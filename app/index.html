@@ -7,7 +7,7 @@
     <meta name="description" content="{{ blog.summary }}">
     <meta name="fragment" content="!">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <base href="/">
+    <base href="/blog/app/">
     <link rel="shortcut icon">
 
     <!-- build:css css/styles.min.css -->
@@ -19,24 +19,12 @@
     <link rel="stylesheet" href="css/styles.css">
     <!-- endbuild -->
 
-    <!-- This has to be at the top to make it works in IE   -->
     <!--[if lte IE 8]>
-    <script src="js/lib/json2.js"></script>
-    <script>
-    document.createElement('m-loading');
-    document.createElement('m-pagination');
-    document.createElement('m-no-result');
-    document.createElement('m-dynamic-tpl');
-    </script>
-    <![endif]-->
-
-    <!--[if lte IE 7]>
     <script type="text/javascript">
-    window.unSupport = true
-    document.write("<h1>Sorry, we don't support IE <=7</h1>");
+     window.unSupport = true;
+     location.href = 'notsupport.html';
     </script>
     <![endif]-->
-
   </head>
   <body ng-animate="{enter: 'animated fadeInX'}" ng-cloak style="overflow-x: hidden">
     <!-- START:HEADER -->
