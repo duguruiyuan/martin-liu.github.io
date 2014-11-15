@@ -1,9 +1,15 @@
 <m-loading ng-if="!vm.data.content"></m-loading>
 <div ng-if="vm.data.content">
-  <h2 ng-bind="vm.data.blog.title"></h2>
-  <div ng-bind-html="vm.data.content"></div>
+  <h2 class="align-center" ng-bind="vm.data.blog.title"></h2>
+  <p ng-bind="vm.data.blog.created_at | date:'yyyy-MM-dd hh:mm:ss'" class="created-at"></p>
+  <br/>
+  <div class="blog-content" ng-bind-html="vm.data.content"></div>
 </div>
+
 <br/>
 <br/>
+<hr/>
+<p>欢迎扫码订阅公众号:</p>
+<img width="120" src="/image/qrcode_wechat.jpg"/>
 <div ng-if="vm.data.blog.number"
      duoshuo data-thread-key="{{vm.data.blog.number}}"></div>

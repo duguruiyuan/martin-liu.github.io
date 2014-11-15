@@ -25,7 +25,7 @@ App.factory 'BlogRemoteService', (Config, Restangular, Util) ->
     getWithCache 'issues' + id, param, ->
       rest.one('issues/' + id).get param
 
-  @renderBlog = (text) ->
+  @renderMarkdown = (text) ->
     getWithCache 'markdown', text, ->
       Restangular.all('markdown').post {
         text: text

@@ -9,7 +9,7 @@ App.factory 'ArticleViewModel', ($rootScope, $routeParams, BlogRemoteService
         if blog.body
           @data.blog = BlogService.decorateBlog blog
           # render markdown
-          BlogRemoteService.renderBlog(blog.body).then (ret)=>
+          BlogRemoteService.renderMarkdown(blog.body).then (ret)=>
             @data.content = ret
           # bind root scope
           $rootScope.blog = @data.blog

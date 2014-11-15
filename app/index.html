@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title ng-bind="blog.title ? blog.title : '今夕何夕？'"></title>
-    <meta name="description" content="{{ blog.summary }}">
+    <meta name="description" content="{{ blog.meta.summary ? blog.meta.summary : 'Martin Liu\'s Blog'}}">
     <meta name="fragment" content="!">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <base href="/blog/app/">
+    <base href="/">
     <link rel="shortcut icon">
 
     <!-- build:css css/styles.min.css -->

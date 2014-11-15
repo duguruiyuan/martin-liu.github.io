@@ -4,5 +4,5 @@ grunt build
   git init
   git add .
   git commit -m "Deployed to Github Pages"
-  git push --force --quiet "https://github.com/martin-liu/martin-liu.github.io.git" master
+  git push --force --quiet "git@github.com:martin-liu/martin-liu.github.io.git" master
 )
