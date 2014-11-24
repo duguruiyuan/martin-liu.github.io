@@ -3,7 +3,7 @@
   <h2 class="align-center" ng-bind="vm.data.blog.title"></h2>
   <p ng-bind="vm.data.blog.created_at | date:'yyyy-MM-dd hh:mm:ss'" class="created-at"></p>
   <br/>
-  <div class="blog-content" ng-bind-html="vm.data.content"></div>
+  <div class="blog-content markdown-body" ng-bind-html="vm.data.content"></div>
 </div>
 
 <br/>

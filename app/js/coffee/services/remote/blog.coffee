@@ -11,7 +11,7 @@ App.factory 'BlogRemoteService', (Config, Restangular, Util) ->
 
   defaultParam =
     state: "open"
-    labels: "blog"
+    labels: if !Config.debug then "blog" else ''
     page: 1
     per_page: 10
 
