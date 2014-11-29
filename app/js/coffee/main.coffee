@@ -29,10 +29,10 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
       else
         response
 
-App.run (AppInitService, $rootScope, $location) ->
+App.run (AppInitService, $rootScope, $location, Config) ->
   AppInitService.init()
 
-  # Baidu statistics
   $rootScope.$on '$routeChangeSuccess', ($event, current) ->
+    # Baidu statistics
     if _hmt
       _hmt.push(['_trackPageview', $location.url()]);

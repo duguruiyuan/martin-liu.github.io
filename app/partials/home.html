@@ -1,10 +1,12 @@
 <m-loading ng-if="!vm.data.blogs"></m-loading>
 <div ng-if="vm.data.blogs" ng-repeat="blog in vm.data.blogs">
-  <div style="cursor:pointer"
-       ng-click="Util.redirect('/article/' + blog.number)">
+  <a class="blog-title-link" ng-href="#!/article/{{blog.number}}">
     <h3 ng-bind="blog.title"></h3>
-    <p class="summary markdown-body" ng-bind-html="blog.meta.summary"></p>
-    <span ng-bind="blog.created_at | date:'yyyy-MM-dd'"</span>>
-  </div>
+  </a>
+  <p class="summary markdown-body" ng-bind-html="blog.meta.summary"></p>
+  <p>
+    <a ng-href="#!/article/{{blog.number}}">阅读全文...</a>
+  </p>
+  <span ng-bind="blog.created_at | date:'yyyy-MM-dd'"</span>>
   <hr/>
 </div>

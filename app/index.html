@@ -4,8 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title ng-bind="blog.title ? blog.title : '今夕何夕？'"></title>
-    <meta name="description" content="{{ blog.meta.summary ? blog.meta.summary : 'Martin Liu\'s Blog'}}">
+    <meta name="description" content="{{ blog.meta.summary ? Util.removeHtmlTags(blog.meta.summary) : 'Martin Liu\'s Blog'}}">
+    <!-- START: For SEO -->
     <meta name="fragment" content="!">
+    <link rel="canonical" href="http://service.prerender.io/http://martin-liu.github.io/?_escaped_fragment_=" />
+    <script>
+     // try this since google crawlers now can run javascript
+     var hash = location.hash.split('#!');
+     if (hash.length == 2 && hash[1] != '/'){
+       document.head.querySelector('link').href += hash[1];
+     }
+    </script>
+    <!-- END: For SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <base href="/">
     <link rel="shortcut icon">
@@ -21,8 +31,8 @@
 
     <!--[if lte IE 8]>
     <script type="text/javascript">
-     window.unSupport = true;
-     location.href = 'notsupport.html';
+    window.unSupport = true;
+    location.href = 'notsupport.html';
     </script>
     <![endif]-->
   </head>
@@ -39,9 +49,9 @@
               </li>
               <li class="float-shadow"
                   ng-class="{active: currentPage == route.params.name}"
-                  ng-click="Util.redirect(route.url)"
                   ng-repeat="route in config.routes">
-                <a href="" ng-if="!route.params.hide" ng-bind="route.params.label"></a>
+                <a ng-href="#!{{route.url}}"
+                   ng-if="!route.params.hide" ng-bind="route.params.label"></a>
               </li>
             </ul>
           </div>
