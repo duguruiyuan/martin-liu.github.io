@@ -32,6 +32,13 @@ module.exports = (grunt) ->
       tmp: [".tmp/"]
 
     concat:
+      dev:
+        src: [
+          "app/js/app.js"
+          "app/js/coffee/**/*.js"
+        ]
+        dest: "app/js/app.js"
+
       template:
         src: [
           ".tmp/concat/js/scripts.min.js"
@@ -259,12 +266,13 @@ module.exports = (grunt) ->
           atBegin: true
       scripts:
         files: [
-          "app/js/coffee/**/*.coffee"
-          "test/coffee/**/*.coffee"
+          "app/js/coffee/**/*.*"
+          "test/coffee/**/*.*"
         ]
         tasks: [
           "coffee"
           "coffeelint"
+          "concat:dev"
           "ngdocs"
         ]
         options:
@@ -330,9 +338,12 @@ module.exports = (grunt) ->
         length: 8
       images:
         src: [
-          'dist/image/**/*.{jpg,jpeg,gif,png,webp}'
-          'dist/js/scripts.min.js'
-          'dist/css/styles.min.css'
+          # do not process subfolder of image/, in case for dynamic img urls,
+          # which will not be replaced correctly.
+          # you can put dynamic usage images to subfolders
+          'dist/image/*.{jpg,jpeg,gif,png,webp}'
+          'dist/js/scripts.*.js'
+          'dist/css/styles.*.css'
         ]
 
     useminPrepare:
@@ -342,7 +353,8 @@ module.exports = (grunt) ->
     usemin:
       html: ['dist/index.*', 'dist/js/scripts.min.*.js', 'dist/css/styles.min.*.css']
       options:
-        assetsDirs: ['dist']
+        # add 'dist/css' here is for the case url('../image/xx.png')
+        assetsDirs: ['dist', 'dist/css']
 
     uglify:
       options:
@@ -408,6 +420,7 @@ module.exports = (grunt) ->
     #    'test',
     "clean:build"
     "coffee"
+    "concat:dev"
     "less:dev"
     "copy:tmp"
     "html2js"
