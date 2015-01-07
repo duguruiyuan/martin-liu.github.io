@@ -17,5 +17,5 @@ App.factory 'BlogService', (BlogRemoteService)->
 
     if blog.meta && blog.meta.summary
       BlogRemoteService.renderMarkdown(blog.meta.summary).then (data)->
-       blog.meta.summary = data
+        blog.meta.summary = data
     blog

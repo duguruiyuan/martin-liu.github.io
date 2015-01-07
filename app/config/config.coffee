@@ -3,10 +3,14 @@ window.Config =
   uri:
     base: "/"
     host: "/"
-    api: "/api/"
+    api: "https://api.github.com/"
+
+  githubRepo:
+    name: "martin-liu.github.io"
+    owner: "martin-liu"
 
   default:
-    displayCount: 20
+    displayCount: 10
     modalAnimateIn: "fadeInRight"
     modalAnimateOut: "fadeOutRight"
 
@@ -18,7 +22,7 @@ window.Config =
     siteId: 0
 
   intro:
-    enabled: true
+    enabled: false
 
-  urlHtml5Mode: true
+  urlHtml5Mode: false
   version: "0.0.1"
