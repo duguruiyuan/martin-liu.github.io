@@ -1,5 +1,6 @@
 window.Config =
-  name: "app"
+  name: "blog"
+  debug: false
   uri:
     base: "/"
     host: "/"

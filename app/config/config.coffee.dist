@@ -1,5 +1,5 @@
 window.Config =
-  name: "app"
+  name: "blog"
   uri:
     base: "/"
     host: "/"
