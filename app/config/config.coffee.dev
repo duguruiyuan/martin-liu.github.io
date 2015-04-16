@@ -1,0 +1,28 @@
+window.Config =
+  name: "blog"
+  uri:
+    base: "/"
+    host: "/"
+    api: "https://api.github.com/"
+
+  githubRepo:
+    name: "martin-liu.github.io"
+    owner: "martin-liu"
+
+  default:
+    displayCount: 10
+    modalAnimateIn: "fadeInRight"
+    modalAnimateOut: "fadeOutRight"
+
+  piwik:
+    enabled: false
+    app: 'appName'
+    prod: 'prodName'
+    url: ''
+    siteId: 0
+
+  intro:
+    enabled: false
+
+  urlHtml5Mode: false
+  version: "0.0.1"
