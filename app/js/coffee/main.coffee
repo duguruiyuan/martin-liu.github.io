@@ -14,7 +14,9 @@ App.constant '_', _
 App.config ($provide, $httpProvider, RestangularProvider) ->
   # Restangular base url
   RestangularProvider.setBaseUrl Config.uri.api
-  RestangularProvider.setDefaultRequestParams('jsonp', {callback: 'JSON_CALLBACK'})
+  RestangularProvider.setDefaultRequestParams('jsonp', {
+    callback: 'JSON_CALLBACK'
+  })
 
   # Global http error handler
   $httpProvider.interceptors.push ($timeout, $q, $rootScope, $location) ->
@@ -34,4 +36,4 @@ App.run (AppInitService, $rootScope, $location, Config) ->
   $rootScope.$on '$routeChangeSuccess', ($event, current) ->
     # Baidu statistics
     if _hmt
-      _hmt.push(['_trackPageview', $location.url()]);
+      _hmt.push(['_trackPageview', $location.url()])
