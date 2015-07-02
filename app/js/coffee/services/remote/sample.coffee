@@ -1,17 +1,18 @@
 'use strict'
-App.factory 'SampleRemoteService', (Config, Restangular, Util) ->
-  rest = Restangular.all 'ops'
-  getCacheKey = (method, param)->
-    "#{Config.name}_SampleRemoteservice_#{method}_#{JSON.stringify param}"
-  # Session cache
-  getWithCache = (method, param, func, timeout)->
-    Util.getWithCache getCacheKey(method, param), true, func, timeout
+App.factory 'SampleRemoteService', (Restangular, BaseRemoteService) ->
+  new class SampleRemoteService extends BaseRemoteService
+    constructor: ->
+      super()
+      @rest = Restangular.all('sample')
 
-  @query = (param, canceler) ->
-    getWithCache 'query', param, ->
-      if canceler && canceler.promise
-        rest.one('query').withHttpConfig({timeout: canceler.promise}).get param
-      else
-        rest.one('query').get param
+    query: (param)->
+      @doQuery 'test1', param
 
-  return @
+    queryWithCanceler: (param, canceler)->
+      @doQuery 'test2', param, canceler
+
+    queryWithCache: (param)->
+      @doQueryWithCache 'test3', param, null, 300
+
+    queryWithCancelerAndCache: (param, canceler)->
+      @doQueryWithCache 'test4', param, canceler, 300

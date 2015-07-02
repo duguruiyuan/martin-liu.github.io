@@ -12,8 +12,6 @@ window.Config =
 
   default:
     displayCount: 10
-    modalAnimateIn: "fadeInRight"
-    modalAnimateOut: "fadeOutRight"
 
   piwik:
     enabled: false

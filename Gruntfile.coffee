@@ -227,7 +227,7 @@ module.exports = (grunt) ->
         actions: [
           name: "travis"
           search: /<base href="\/">/
-          replace: '<base <%= repoName %> href="\/<%= repoName %>\/">'
+          replace: '<base href="\/<%= repoName %>\/">'
         ]
 
       sourceMap:
@@ -413,7 +413,7 @@ module.exports = (grunt) ->
     "coffee:scripts"
     "coffeelint"
     "concat:dev"
-    "ngdocs"
+    #"ngdocs"
   ]
 
   grunt.registerTask 'do-usemin', [
