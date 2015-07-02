@@ -7,7 +7,7 @@ App.factory 'BlogRemoteService', (Config, Restangular, Util
     labels: if !Config.debug then "blog" else ''
     page: 1
     per_page: 10
-    creator: Config.
+    creator: Config.githubRepo.owner
 
   new class BlogRemoteService extends BaseRemoteService
     constructor: ->

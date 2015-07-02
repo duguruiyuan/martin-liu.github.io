@@ -1,5 +1,5 @@
 {
-  "name": "M Angular Boilerplate",
+  "name": "A Blog System",
   "version": "0.0.1",
   "dependencies": {
     "angular": "1.2.22",
@@ -18,8 +18,8 @@
     "nprogress": "~0.1.6",
     "underscore.string": "~2.3.3",
     "modernizr": "~2.8.3",
+    "moment": "~2.9.0",
     "duoshuo": "~0.4.7"
-    "moment": "~2.9.0"
   },
   "devDependencies": {
     "less.js": "~1.6.3",
