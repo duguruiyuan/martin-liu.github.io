@@ -1,35 +1,30 @@
 'use strict'
-App.factory 'BlogRemoteService', (Config, Restangular, Util) ->
-  repo = Config.githubRepo
-  rest = Restangular.all "repos/#{repo.owner}/#{repo.name}"
-
-  getCacheKey = (method, param)->
-    "#{Config.name}_BlogRemoteservice_#{method}_#{JSON.stringify param}"
-  # Session cache
-  getWithCache = (method, param, func, timeout)->
-    Util.getWithCache getCacheKey(method, param), true, func, 300
+App.factory 'BlogRemoteService', (Config, Restangular, Util
+, BaseRemoteService) ->
 
   defaultParam =
     state: "open"
     labels: if !Config.debug then "blog" else ''
     page: 1
     per_page: 10
+    creator: Config.
 
-  @getBlogs = (param) ->
-    param = _.extend defaultParam, param
-    getWithCache 'issues', param, ->
-      rest.one('issues').get param
+  new class BlogRemoteService extends BaseRemoteService
+    constructor: ->
+      repo = Config.githubRepo
+      @rest = Restangular.all "repos/#{repo.owner}/#{repo.name}"
 
-  @getBlog = (id, param) ->
-    param = _.extend defaultParam, param
-    getWithCache 'issues' + id, param, ->
-      rest.one('issues/' + id).get param
+    getBlogs: (param) ->
+      param = _.extend defaultParam, param
+      @doQueryWithCache 'issues', param
 
-  @renderMarkdown = (text) ->
-    getWithCache 'markdown', text, ->
-      Restangular.all('markdown').post {
-        text: text
-        mode: 'gfm'
-      }
+    getBlog: (id, param) ->
+      param = _.extend defaultParam, param
+      @doQueryWithCache 'issues/' + id, param
 
-  return @
+    renderMarkdown: (text) ->
+      @getWithCache 'markdown', text, ->
+        Restangular.all('markdown').post {
+          text: text
+          mode: 'gfm'
+        }

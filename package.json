@@ -39,6 +39,6 @@
   },
   "scripts": {
     "travis-deploy": "./bin/travis-deploy-ghpages.sh",
-    "master": "./bin/dist2master.sh"
+    "deploy": "./bin/deploy.sh"
   }
 }
