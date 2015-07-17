@@ -1,5 +1,5 @@
-App.factory 'ArticleViewModel', ($rootScope, $routeParams, BlogRemoteService
-, BlogService, BaseViewModel, Util, Cache) ->
+App.factory 'ArticleViewModel', ($rootScope, BlogRemoteService, $routeParams
+, BlogService, BaseViewModel, Util) ->
 
   class ArticleViewModel extends BaseViewModel
     ## Override

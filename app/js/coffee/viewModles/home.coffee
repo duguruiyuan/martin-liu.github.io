@@ -1,5 +1,5 @@
-App.factory 'HomeViewModel', ($q, $location, $timeout, BlogRemoteService
-, BlogService, BaseViewModel, Util, Cache) ->
+App.factory 'HomeViewModel', (BlogRemoteService
+, BlogService, BaseViewModel, Util) ->
 
   class HomeViewModel extends BaseViewModel
     ## Override
